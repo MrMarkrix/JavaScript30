@@ -41,9 +41,30 @@
   }
 </style>
 
-<button></button>
+<button>HERE</button>
+
 <script>
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+  
+  function logText(e){
+    console.log(this.classList.value);
+    e.stopPropagation(); //stops the ripple
+  };
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false, //ripples inward
+    //once:true //can be activated only once, ex with button
+  }));
+
+button.addEventListener('click', () => {
+  console.log('Click');
+},{
+  once:true,
+})  
 
 </script>
+
+
 </body>
 </html>
